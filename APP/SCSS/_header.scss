@@ -6,11 +6,12 @@
 
     &__logo{
         img{
-            
+            width: 8.81rem;
+            height: 1.75;
         }
     }
 
-    &__hamburger{
+    &__menu{
         > span {
             display: block;
             width: 26px;
@@ -22,4 +23,16 @@
             }
         }
     }
+   
+    &__links {
+        a{
+            font-size: $font-sm;
+            color: $grayishBlue;
+
+            &:not(:last-child) {
+                margin-right: 32px;
+            }
+        }
+    }
+
 }
