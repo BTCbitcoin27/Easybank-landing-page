@@ -1,7 +1,25 @@
 .header {
 
+   // Hamburger Open Styles
+   &.open {
+
+    .header__toggle {
+      > span:first-child {
+        transform: rotate(45deg);
+      }
+      
+      > span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      > span:last-child {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
     nav {
-        padding: 24px;
+        padding: 1.0625rem 24px;
     }
 
     &__logo{
@@ -17,6 +35,8 @@
             width: 26px;
             height: 2px;
             background-color: $darkBlue;
+            transition: all 300ms ease-in-out;
+            transform-origin: left center;
 
             &:not(:last-child) {
                 margin-bottom: 2px;
@@ -25,14 +45,57 @@
     }
    
     &__links {
-        a{
-            font-size: $font-sm;
-            color: $grayishBlue;
 
-            &:not(:last-child) {
-                margin-right: 32px;
+        a {
+          position: relative;
+          font-size: $font-sm;
+          color: $grayishBlue;
+          transition: color 300ms ease-in-out;
+    
+          &:not(:last-child){
+            margin-right: 32px;
+          }
+    
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 5px;
+            left: 0;
+            right: 0;
+            bottom: -30px;
+            transition: opacity 300ms ease-in-out;
+            background: linear-gradient(to right, $limeGreen, $brightCyan);
+            opacity: 0;
+          }
+          &:hover {
+            color: $darkBlue;
+    
+            &::before {
+              opacity: 1 ;
             }
+          }
         }
-    }
+      }
+  
+  &__cta{
+    font-size: $font-sm;
+        color: $white;
+        transition: opacity 300ms ease-in-out ;
+
+        &:hover {
+          opacity: 0.75;
+    }           
+  }
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 3.75rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient($darkBlue, transparent);
 
 }

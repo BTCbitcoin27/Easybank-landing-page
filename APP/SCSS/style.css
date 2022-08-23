@@ -35,7 +35,7 @@ a, a:visited, a:hover {
 }
 
 button, .button {
-  padding: 1rem 1.875rem;
+  padding: 0.875rem 2.1875rem;
   border-radius: 50px;
   cursor: pointer;
   background: linear-gradient(to right, hsl(136deg, 65%, 51%), hsl(192deg, 70%, 51%));
@@ -44,26 +44,87 @@ button, .button {
   font-weight: 400;
 }
 
-.hide-for-mobile {
-  @inc;
+@media (max-width: 63.9375em) {
+  .hide-for-mobile {
+    display: none;
+  }
 }
 
+@media (min-width: 64em) {
+  .hide-for-desktop {
+    display: none;
+  }
+}
+
+.header.open .header__toggle > span:first-child {
+  transform: rotate(45deg);
+}
+.header.open .header__toggle > span:nth-child(2) {
+  opacity: 0;
+}
+.header.open .header__toggle > span:last-child {
+  transform: rotate(-45deg);
+}
 .header nav {
-  padding: 24px;
+  padding: 1.0625rem 24px;
 }
 .header__logo img {
-  width: 100%;
+  width: 8.81rem;
+  height: 1.75;
 }
 .header__menu > span {
   display: block;
   width: 26px;
   height: 2px;
   background-color: hsl(233deg, 26%, 24%);
+  transition: all 300ms ease-in-out;
+  transform-origin: left center;
 }
 .header__menu > span:not(:last-child) {
   margin-bottom: 2px;
 }
 .header__links a {
+  position: relative;
   font-size: 0.875rem;
   color: hsl(233deg, 8%, 62%);
+  transition: color 300ms ease-in-out;
+}
+.header__links a:not(:last-child) {
+  margin-right: 32px;
+}
+.header__links a::before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 5px;
+  left: 0;
+  right: 0;
+  bottom: -30px;
+  transition: opacity 300ms ease-in-out;
+  background: linear-gradient(to right, hsl(136deg, 65%, 51%), hsl(192deg, 70%, 51%));
+  opacity: 0;
+}
+.header__links a:hover {
+  color: hsl(233deg, 26%, 24%);
+}
+.header__links a:hover::before {
+  opacity: 1;
+}
+.header__cta {
+  font-size: 0.875rem;
+  color: hsl(0deg, 0%, 100%);
+  transition: opacity 300ms ease-in-out;
+}
+.header__cta:hover {
+  opacity: 0.75;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 3.75rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(hsl(233deg, 26%, 24%), transparent);
 }/*# sourceMappingURL=style.css.map */
